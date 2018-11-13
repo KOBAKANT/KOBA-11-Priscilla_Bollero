@@ -1,9 +1,15 @@
 ////////////////////////////////////////////////////////
 // SOUND MODE FLASH
 ////////////////////////////////////////////////////////
-uint32_t randomColor[] = {blue, redish, greenish, orange, yellow };
 
-void soundModeFlash(int vol, int thre) {
+uint32_t pink = strip.Color(255, 6, 154);
+uint32_t whitish = strip.Color(215, 210, 183);
+uint32_t greeny = strip.Color(194, 249, 22);
+uint32_t brown = strip.Color(221, 221, 0);
+uint32_t aqu = strip.Color(3, 221, 189);
+uint32_t randomColor2[] = {pink,whitish,greeny,brown,aqu };
+
+void soundModeFlash2(int vol, int thre) {
 
   strip.setBrightness(255);
 
@@ -15,8 +21,8 @@ void soundModeFlash(int vol, int thre) {
       strip.setPixelColor(i, off);
     }
 
-    strip.setPixelColor(currentPixel, randomColor[currentColor]);
-    strip.setPixelColor(currentPixel + 4, randomColor[currentColor]);
+    strip.setPixelColor(currentPixel, randomColor2[currentColor]);
+    strip.setPixelColor(currentPixel + 4, randomColor2[currentColor]);
     strip.show();
     delay(20);
   }

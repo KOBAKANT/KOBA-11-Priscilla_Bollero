@@ -1,16 +1,26 @@
 // ANIMATION MIX
 ////////////////////////////////////////////////////////
-void animationMix( int R_1, int G_1, int B_1, int R_2, int G_2, int B_2, int R_3, int G_3, int B_3){
+void animationMix(int vol, int mMin, int mMax){
 
 
-  
-  strip.setBrightness(255);
-  
+  int R_1=249; 
+  int G_1=77; 
+  int B_1=22; 
+  int R_2=22;
+  int G_2=249; 
+  int B_2=195;
+  int R_3=15;
+  int G_3=149;
+  int B_3=122; 
 
   int R;
   int G;
   int B;
 
+strip.setBrightness(255);
+
+int t = map(vol, mMin, mMax, 0 , 100 );
+float intensity=constrain((float)(t / 100.0), 0.0, 1.0);
 
 // calculate the color witn intensity change
   R = (int)(R_2-R_1)*intensity + R_1;

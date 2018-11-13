@@ -2,36 +2,33 @@
 // SOUND MODE FADE
 ////////////////////////////////////////////////////////
 
-void soundModeFade(boolean trig, float acc) {
+int brightness;
+int fadeSpeed = 15;
 
-  //Color1 is (226, 98, 10);
-  //Color2 is (220, 191, 73);
+void soundModeFade(int vol, int thre) {
 
-  int R_1 = 226;
-  int G_1 = 98;
-  int B_1 = 10;
-  int R_2 = 220;
-  int G_2 = 191;
-  int B_2 = 73;
- 
-strip.setBrightness(255);
-  if (trig){intensity=1.0;}
+  if (vol > thre) {
+    //set the brightness to full intensity
+    brightness = 255;
+  }
 
-  intensity = intensity - acc;
-  intensity = constrain(intensity, 0.0, 1.0);
-  Serial.println(intensity);
+
+  brightness = constrain(brightness, 0, 255);
+  strip.setBrightness(brightness);
+
+  // slowly fade out
+  if (brightness > 0) {
+    brightness = brightness - fadeSpeed;
+  }
+
+
+
 
   for (int i = 0; i < 4; i++) {
-    R_1 = (int)R_1 * intensity;
-    G_1 = (int)G_1 * intensity;
-    B_1 = (int)B_1 * intensity;
-    strip.setPixelColor(i, strip.Color(R_1, G_1, B_1));
+    strip.setPixelColor(i, strip.Color(226, 98, 10));
   }
   for (int i = 4; i < 8; i++) {
-    R_2 = (int)R_2 * intensity;
-    G_2 = (int)G_2 * intensity;
-    B_2 = (int)B_2 * intensity;
-    strip.setPixelColor(i, strip.Color(R_2, G_2, B_2));
+    strip.setPixelColor(i, strip.Color(220, 191, 73));
   }
 
   strip.show();
