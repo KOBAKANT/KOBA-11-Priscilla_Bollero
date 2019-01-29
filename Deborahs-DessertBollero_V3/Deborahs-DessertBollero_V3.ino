@@ -96,8 +96,8 @@ void loop() {
       break;
 
     case 3:
-      soundModeFlash2(micValue, micThreshold);
-      // soundModeFade(micValue, micThreshold);
+      //soundModeFlash2(micValue, micThreshold);
+      soundModeFade(micValue, micThreshold);
       break;
 
 

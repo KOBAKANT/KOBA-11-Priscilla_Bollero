@@ -1,5 +1,5 @@
 long callibrateDuration = 5000;
-float  thresholdPercent = 0.25;
+float  thresholdPercent = 0.5;
 
 void callibrateMIC() {
 
@@ -18,8 +18,8 @@ if (debug){
   strip.show();
 
   // reset min and max
-  micMax = 0;
-  micMin = 1023;
+  micMax = 40;
+  micMin = 10;
 
 
   delay(1000);
@@ -36,7 +36,7 @@ delay(40);
 //    micValue =(micValue /3)*2;
 
 
-    if (micValue < micMin) micMin = micValue;
+   // if (micValue < micMin) micMin = micValue;
     if (micValue > micMax) micMax = micValue;
     
     // print the result in debug mode
