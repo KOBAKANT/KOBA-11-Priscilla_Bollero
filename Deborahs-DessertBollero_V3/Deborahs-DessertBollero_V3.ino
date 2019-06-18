@@ -34,9 +34,9 @@ int Mode;
 int LastMode;
 
 int micValue;
-int micThreshold = 80;
-int micMax = 1023;
-int micMin = 0;
+int micThreshold = 30;
+int   micMax = 40;
+int   micMin = 10;
 
 boolean debug = true;
 
@@ -82,15 +82,16 @@ void loop() {
 
   switch (Mode) {
 
-    case 0:
-     soundModeFlash(micValue, micThreshold);
-      break;
-
-    case 1:
+      case 0:
       
       animationMix(micValue, micMin, micMax);
       break;
 
+    case 1:
+     soundModeFlash(micValue, micThreshold);
+      break;
+
+ 
     case 2:
       soundModeTequilaSunrise(micValue, micMin, micMax);
       break;
@@ -112,7 +113,8 @@ void loop() {
       break;
   }
 
-  delay(10);
+  delay(50);
+
 
 }
 

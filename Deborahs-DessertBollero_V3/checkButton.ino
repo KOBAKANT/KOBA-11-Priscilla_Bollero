@@ -16,36 +16,41 @@ int checkButton(boolean Reset) {
 
   long currentTime = millis();
 
+
   // if button is pressed, and if it was previously not pressed
-  if (buttonState == LOW && lastButtonState != buttonState) {
+  if (buttonState == LOW && lastButtonState == HIGH) {
 
     // calculate the difference between the current time of the press and the previous press timestamp
     long diff = currentTime - timeStamp;
 
-   
     //----------------------------
     // checking double click
     //----------------------------
     // if double click within 1sec, then it is mode 4 (calibration)
-    if (diff > 40 && diff < 500) {
-      if (mode!=4){
-      lastMode=(mode-1)%4;  
-      mode = 4; // calibtation mode
+    if (diff > 100) {
+      if (diff < 500) {
+        if (mode != 4) {
+          lastMode = (mode-1)%4;
+          mode = 4; // calibtation mode
+
+        }
+      }
+      else {
+        // count the mode up
+        mode++;
+        // toggle between mode 0-3
+        mode = mode % 4;
+        // mark the time of the button press
+        timeStamp = currentTime;
+
       }
     }
-    else{
-       // count the mode up
-    mode++;
-    // toggle between mode 0-3
-    mode = mode % 4;
-    // mark the time of the button press
-    timeStamp = currentTime;
 
-    }
   }
-  if (Reset){
-    mode=lastMode;   
+
+  if (Reset) {
+    mode = lastMode;
   }
-  mode=constrain(mode,0,4);
+  mode = constrain(mode, 0, 4);
   return mode;
 }

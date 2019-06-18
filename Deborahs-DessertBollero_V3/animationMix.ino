@@ -33,7 +33,7 @@ float intensity=constrain((float)(t / 100.0), 0.0, 1.0);
   B=constrain(B,0,255);
 
 // first 4 pixels animage between color 1 and color2
-  for (int i = 0; i < 8; i++) {
+  for (int i = 0; i < 4; i++) {
     strip.setPixelColor(i, strip.Color(R, G, B));
   }
 

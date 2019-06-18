@@ -47,7 +47,7 @@ mMax=mMax*0.8;
     B=constrain(B,0,255);
 
     strip.setPixelColor(i, strip.Color(R, G, B));
-    strip.setPixelColor(i + 4, strip.Color(R, G, B));
+    strip.setPixelColor(7-i, strip.Color(R, G, B));
   }
   
 
